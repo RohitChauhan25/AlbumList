@@ -21,6 +21,8 @@ const AlbumCart = ({
   index,
 }) => {
   const [arrow, setArrow] = useState('Show')
+
+  // confirmation box before deleting album
   const showConfirm = (id) => {
     DeleteModal.confirm({
       title: 'Confirm Delete',
@@ -34,6 +36,7 @@ const AlbumCart = ({
     })
   }
 
+  // delete album API call
   const deleteAlbums = async (id) => {
     try {
       const res = await axios.delete(

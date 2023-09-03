@@ -27,11 +27,10 @@ import { VALIDATION_SCHEMA } from '../utils/index'
 import { Input, notification } from 'antd'
 import AddAlbumMOdal from '../components/AddAlbum'
 const Home = () => {
-  const [albumsData, setAlbumsData] = useState([])
-  const [showModal, setShowModal] = useState(false)
-  const [showAddModal, setShowAddModal] = useState(false)
-  const [savedData, setSavedData] = useState()
-
+  const [albumsData, setAlbumsData] = useState([]) //  state for store the data of list of album
+  const [showModal, setShowModal] = useState(false) // show or hide Update album modal
+  const [showAddModal, setShowAddModal] = useState(false) // show or hide Add new album modal
+  const [savedData, setSavedData] = useState() // state for save data of album which you want to update
   const {
     handleSubmit,
     setValue,
@@ -48,6 +47,7 @@ const Home = () => {
     },
   })
 
+  // fetch the data from API
   const fetchAlbumsData = async () => {
     try {
       const response = await axios.get(
@@ -73,6 +73,7 @@ const Home = () => {
     }
   }, [savedData])
 
+  // Update album data API call
   const Update = async (data) => {
     const payload = {
       userId: data?.userId,
@@ -104,6 +105,7 @@ const Home = () => {
     }
   }
 
+  // add new album API call
   const AddAlbum = async (data) => {
     const payload = {
       userId: data?.userId,
